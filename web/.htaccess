@@ -1,0 +1,6 @@
+DirectoryIndex home.php
+ErrorDocument 404 /web/404.php
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www.web [NC]
+RewriteRule ^(.*)$ http://web/$1 [L,R=301]
