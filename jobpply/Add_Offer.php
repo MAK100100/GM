@@ -1,11 +1,21 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: Mohanad Assim
+ * Date: 7/31/2019
+ * Time: 11:08 AM
+ */
+include_once "readyform/form.php"
+?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <title>Jobpply - Free Bootstrap 4 Template by Colorlib</title>
+    <title>New Job Offer</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
+    <!--<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet"> -->
 
     <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="css/animate.css">
@@ -27,43 +37,19 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">Jobpply</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span> Menu
-        </button>
-
-        <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="index.html" class="nav-link">الرئيسية</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">عرض الوظائف</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">عرض CVs</a></li>
-                <li class="nav-item"><a href="new-post.html" class="nav-link">اضافة وظيفة</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">اضافة CV</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">اتصل بنا</a></li>
-                <li class="nav-item"><a href="about1.html" class="nav-link">من نحن</a></li>
-
-            </ul>
-        </div>
-    </div>
-</nav>
-<!-- END nav -->
+<?php header_1(); // HEADER?>
 
 <div class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');"  data-stellar-background-ratio="0.5">
     <div class="overla"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-start">
-           <!-- <div class="col-md-8 ftco-animate text-center text-md-left mb-5">
-                <p class="breadcrumbs mb-0"><span class="mr-3"><a href="index.html">Home <iclass="ion-ios-arrow-forward"></i></a></span> <span>New Job Post</span></p>
-                <h1 class="mb-3 bread">Post A Job</h1>
-            </div> -->
+            <div class="col-md-8 ftco-animate text-center text-md-left mb-5">
+                <h1 class="col-md-7 mb-1 bread">اضافة وظيفة</h1>
+            </div>
         </div>
     </div>
 </div>
-<h1 align="center" style="font-size: 75px;">اضافة وظيفة</h1>
+<h1 align="center" style="font-size: 75px;"></h1>
 <div class="ftco-section bg-light">
     <div class="container">
         <div class="row">
@@ -152,58 +138,18 @@
                 </form>
             </div>
 
-            <div class="col-lg-4">
-                <div class="p-4 mb-3 bg-white">
-                    <h3 class="h5 text-black mb-3">للتواصل معنا</h3>
-                    <p class="mb-0 font-weight-bold">العنوان</p>
-                    <p class="mb-4">العراق - النجف الاشرف</p>
-
-                    <p class="mb-0 font-weight-bold">هاتف</p>
-                    <p class="mb-4"><a href="#">+964 78XX XXX XXXX</a></p>
-
-                    <p class="mb-0 font-weight-bold">البريد الالكتروني</p>
-                    <p class="mb-0"><a href="#"><span class="__cf_email__"
-                                                      data-cfemail="671e081215020a060e0b2703080a060e094904080a">e-solution@info.com</span></a>
-                    </p>
-
-                </div>
-
-                <div class="p-4 mb-3 bg-white">
-                    <h3 class="h5 text-black mb-3">تفاصيل اخرى</h3>
-                    <p>هل تبحث عن وظيفة؟ تنقيب هو أكبر محرك بحث عن الوظائف في المنطقة العربية، يجلب لك الوظائف من جميع الشركات .</p>
-                    <p><a href="#" class="btn btn-primary  py-2 px-4">Learn More</a></p>
-                </div>
-            </div>
+           <?php Company_info(); ?>
         </div>
     </div>
 </div>
 
-<section class="ftco-section-parallax">
-    <div class="parallax-img d-flex align-items-center">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-                    <h2>Subcribe to our Newsletter</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-                        live the blind texts. Separated they live in</p>
-                    <div class="row d-flex justify-content-center mt-4 mb-4">
-                        <div class="col-md-12">
-                            <form action="#" class="subscribe-form">
-                                <div class="form-group d-flex">
-                                    <input type="text" class="form-control" placeholder="Enter email address">
-                                    <input type="submit" value="Subscribe" class="submit px-3">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<?php  ?>
-<?php ?>
+
+<?php
+    News_letter();           //NEWS LETTER
+    footer_1();             //FOOTER
+?>
+
 
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen">
