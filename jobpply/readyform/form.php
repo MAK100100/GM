@@ -17,13 +17,13 @@ function header_1()
 
         <div class=\"collapse navbar-collapse\" id=\"ftco-nav\">
             <ul class=\"navbar-nav ml-auto\">
-                <li class=\"nav-item active\"><a href=\"home.php\" class=\"nav-link\">الرئيسية</a></li>
-                <li class=\"nav-item\"><a href=\"contact_us.php\" class=\"nav-link\">عرض الوظائف</a></li>
-                <li class=\"nav-item\"><a href=\"contact_us.php\" class=\"nav-link\">عرض السير الذاتية</a></li>
-                <li class=\"nav-item\"><a href=\"Add_Offer.php\" class=\"nav-link\">اضافة وظيفة</a></li>
-                <li class=\"nav-item\"><a href=\"Add_CV.php\" class=\"nav-link\">اضافة سيرة ذاتية</a></li>
-                <li class=\"nav-item\"><a href=\"contact_us.php\" class=\"nav-link\">تواصل معنا</a></li>
-                <li class=\"nav-item\"><a href=\"about.php\" class=\"nav-link\">من نحن</a></li>
+                <li class=\"nav-item active\"><a href=\"home.php\" class=\"nav-link\"><h5>الرئيسية</h5></a></li>
+                <li class=\"nav-item\"><a href=\"contact_us.php\" class=\"nav-link\"><h5>عرض الوظائف</h5></a></li>
+                <li class=\"nav-item\"><a href=\"contact_us.php\" class=\"nav-link\"><h5>عرض السير الذاتية</h5></a></li>
+                <li class=\"nav-item\"><a href=\"add_offer.php\" class=\"nav-link\"><h5>اضافة وظيفة</h5></a></li>
+                <li class=\"nav-item\"><a href=\"add_cv.php\" class=\"nav-link\"><h5>اضافة سيرة ذاتية</h5></a></li>
+                <li class=\"nav-item\"><a href=\"contact_us.php\" class=\"nav-link\"><h5>تواصل معنا</h5></a></li>
+                <li class=\"nav-item\"><a href=\"about.php\" class=\"nav-link\"><h5>من نحن</h5></a></li>
 
             </ul>
         </div>

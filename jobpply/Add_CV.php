@@ -6,7 +6,9 @@
  * Date: 7/31/2019
  * Time: 11:08 AM
  */
-include_once "readyform/form.php"
+include_once "readyform/form.php";
+include_once "class/sql_queries.php"
+
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -53,136 +55,125 @@ include_once "readyform/form.php"
 <div class="ftco-section bg-light">
     <div class="container">
         <div class="row">
-
             <div class="col-md-12 col-lg-8 mb-5">
-
-
-                <form action="#" class="p-5 bg-white">
-
-                 <!--   <div class="row form-group">
-                        <div class="col-md-12"><h3>وقت العمل</h3></div>
-                        <div class="col-md-12 mb-3 mb-md-0">
-                            <label for="option-job-type-1">
-                                <input type="radio" id="option-job-type-1" name="job-type"> 8 ساعات
-                            </label>
-                        </div>
-                        <div class="col-md-12 mb-3 mb-md-0">
-                            <label for="option-job-type-2">
-                                <input type="radio" id="option-job-type-2" name="job-type"> 6 ساعات
-                            </label>
-                        </div>
-
-                        <div class="col-md-12 mb-3 mb-md-0">
-                            <label for="option-job-type-3">
-                                <input type="radio" id="option-job-type-3" name="job-type"> 4 ساعة
-                        </div>
-                        <div class="col-md-12 mb-3 mb-md-0">
-                            <label for="option-job-type-4">
-                                <input type="radio" id="option-job-type-4" name="job-type"> وقت حر
-                            </label>
-                        </div>
-                        <div class="col-md-12 mb-3 mb-md-0">
-                            <label for="option-job-type-4">
-                                <input type="radio" id="option-job-type-5" name="job-type"> اجر يومي
-                            </label>
-                        </div>
-
-                    </div>   -->
-
+                <form method="POST" action="add_cv.php" class="p-5 bg-white">
                     <div class="row form-group">
                         <div class="col-md-4 "><h4>الاسم الثلاثي و اللقب</h4></div>
                         <div class="col-md-6 mb-1 mb-md-0">
-                            <input type="text" id="fullname1" class="form-control" placeholder="ابراهيم محمد صالح العذاري">
+                            <input type="text" name="full_name" class="form-control"  placeholder="ابراهيم محمد صالح العذاري" required>
                         </div>
-
                         <div class="col-md-4"><h4>تاريخ الولادة</h4></div>
                         <div class="col-md-6 mb-3 mb-md-0">
-                            <input type="text" id="fullname5" class="form-control" placeholder="20-5-1990">
+                            <input type="text" name="birthday" class="form-control" required placeholder="20-5-1990" required>
                         </div>
-
+                        <div class="col-md-4"><h4>رقم الهاتف</h4></div>
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <input type="text" name="mobile2" class="form-control" required placeholder="رقم الهاتف" maxlength="8" minlength="8" required>
+                        </div>
+                        <div class="col-md-2 mb-3 mb-md-0">
+                            <select  name="mobile1" class="form-control" placeholder="شركة الاتصال" required>
+                                <option value="0" selected >شركة الاتصال</option>
+                                <option value="1">079</option>
+                                <option value="2" selected>078</option>
+                                <option value="3">077</option>
+                                <option value="4">076</option>
+                                <option value="5">075</option>
+                                <option value="5">074</option>
+                                <option value="5">073</option>
+                                <option value="5">072</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4"><h4>البريد الالكترني</h4></div>
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <input type="email" name="email" class="form-control" required placeholder="unkown@email.com"  size="30" >
+                        </div>
                         <div class="col-md-4"><h3>عنوان السكن</h3></div>
                         <div class="col-md-6 mb-3 mb-md-0">
-                            <input type="text" id="fullname2" class="form-control" placeholder="العراق - النجف الاشرف">
+                            <input type="text" name="address" required class="form-control" placeholder="العراق - النجف الاشرف" required>
                         </div>
-
                         <div class="col-md-12"><h3>التحصيل الدراسي</h3></div>
                         <div class="col-md-1"><h4>1.</h4></div>
                         <div class="col-md-3 mb-3 mb-md-0">
-                            <select name="" id="" class="form-control" placeholder="التحصيل الدراسي">
+                            <select  name="certificate_1" class="form-control" placeholder="التحصيل الدراسي" required>
                                 <option value="0" selected >اختر الشهادة</option>
                                 <option value="1">ثانوي</option>
-                                <option value="2">بكلوريوس</option>
-                                <option value="3">ماجستير</option>
-                                <option value="4">دكتورا</option>
+                                <option value="2">معهد</option>
+                                <option value="3">بكلوريوس</option>
+                                <option value="4">ماجستير</option>
+                                <option value="5">دكتورا</option>
                             </select>
                         </div>
                         <div class="col-md-3 mb-3 mb-md-0">
-                            <input type="text" class="form-control" placeholder="الاختصاص">
+                            <input type="text" name="specialty_1" class="form-control" placeholder="الاختصاص" required>
                         </div>
                         <div class="col-md-3 mb-3 mb-md-0">
-                            <input type="text" class="form-control" placeholder="سنة التخرج">
+                            <input type="text" name="date_1" class="form-control" placeholder="سنة التخرج">
                         </div>
-
                         <div class="col-md-12"></div>
                         <div class="col-md-1"><h4>2.</h4></div>
                         <div class="col-md-3 mb-3 mb-md-0">
-                            <select name="" id="" class="form-control" placeholder="التحصيل الدراسي">
+                            <select  name="certificate_2" class="form-control" placeholder="التحصيل الدراسي" required>
                                 <option value="0" selected >اختر الشهادة</option>
                                 <option value="1">ثانوي</option>
-                                <option value="2">بكلوريوس</option>
-                                <option value="3">ماجستير</option>
-                                <option value="4">دكتورا</option>
+                                <option value="2">معهد</option>
+                                <option value="3">بكلوريوس</option>
+                                <option value="4">ماجستير</option>
+                                <option value="5">دكتورا</option>
                             </select>
                         </div>
                         <div class="col-md-3 mb-3 mb-md-0">
-                            <input type="text" class="form-control" placeholder="الاختصاص">
+                            <input type="text" name="specialty_2" class="form-control" placeholder="الاختصاص" >
                         </div>
                         <div class="col-md-3 mb-3 mb-md-0">
-                            <input type="text" class="form-control" placeholder="سنة التخرج">
+                            <input type="text" name="date_2" class="form-control" placeholder="سنة التخرج">
                         </div>
-
                         <div class="col-md-12"><h3>كورسات اضافية</h3></div>
                         <div class="col-md-1"><h4>1.</h4></div>
                         <div class="col-md-6 mb-3 mb-md-0">
-                            <input type="text" class="form-control" placeholder="الاختصاص">
+                            <input type="text" name="course_1" class="form-control" placeholder="الاختصاص">
                         </div>
                         <div class="col-md-3 mb-3 mb-md-0">
-                            <input type="text" class="form-control" placeholder="سنة التخرج">
+                            <input type="text" name="date_3" class="form-control" placeholder="سنة التخرج">
                         </div>
-
                         <div class="col-md-12"></div>
                         <div class="col-md-1"><h4>2.</h4></div>
                         <div class="col-md-6 mb-3 mb-md-0">
-                            <input type="text" class="form-control" placeholder="الاختصاص">
+                            <input type="text" name="course_2" class="form-control" placeholder="الاختصاص">
                         </div>
                         <div class="col-md-3 mb-3 mb-md-0">
-                            <input type="text" class="form-control" placeholder="سنة التخرج">
+                            <input type="text" name="date_4" class="form-control" placeholder="سنة التخرج">
                         </div>
-
-
-
-
-
-
-
                         <div class="col-md-12 " ><h3>تفاصيل اضافية</h3></div>
                         <div class="col-md-10 mb-3 mb-md-0">
-                            <textarea name="" class="form-control" id="" cols="30" rows="5"></textarea>
+                            <textarea name="details" class="form-control" name="" cols="30" rows="5"></textarea>
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <div class="col-md-12">
-                            <input type="submit" value="Post" class="btn btn-primary  py-2 px-5">
+                            <input type="submit" name="save" value="Post" class="btn btn-primary  py-2 px-5">
                         </div>
+                        <?php
+                        if (isset($_POST['save']))
+                        {
+                            Open_Connection();
+                            Insert_CV($_POST['full_name'],$_POST['birthday'],$_POST['mobile1'].$_POST['mobile2'],$_POST['email'],$_POST['address'],$_POST['certificate_1'],$_POST['specialty_1'],$_POST['date_1'],$_POST['certificate_2'],$_POST['specialty_2'],$_POST['date_2'],$_POST['course_1'],$_POST['date_3'],$_POST['course_2'],$_POST['date_4'],$_POST['details']);
+                            Close_Connection();
+                            //ob_end_flush();
+                           // echo $_POST['full_name'];
+                        }
+
+
+                        ?>
                     </div>
 
 
                 </form>
             </div>
 
-           <?php Company_info(); ?>
+            <?php Company_info(); ?>
         </div>
+
     </div>
 </div>
 
