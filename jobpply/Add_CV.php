@@ -64,23 +64,22 @@ include_once "class/sql_queries.php"
                         </div>
                         <div class="col-md-4"><h4>تاريخ الولادة</h4></div>
                         <div class="col-md-6 mb-3 mb-md-0">
-                            <input type="text" name="birthday" class="form-control" required placeholder="20-5-1990" required>
+                            <input type="number" name="birthday" class="form-control" required placeholder="1990" required max="2001" min="1950" >
                         </div>
                         <div class="col-md-4"><h4>رقم الهاتف</h4></div>
                         <div class="col-md-4 mb-3 mb-md-0">
-                            <input type="text" name="mobile2" class="form-control" required placeholder="رقم الهاتف" maxlength="8" minlength="8" required>
+                            <input type="text" name="mobile2" class="form-control" required placeholder="رقم الهاتف" maxlength="8" minlength="8" pattern="[0-9]+" required>
                         </div>
                         <div class="col-md-2 mb-3 mb-md-0">
                             <select  name="mobile1" class="form-control" placeholder="شركة الاتصال" required>
-                                <option value="0" selected >شركة الاتصال</option>
-                                <option value="1">079</option>
-                                <option value="2" selected>078</option>
-                                <option value="3">077</option>
-                                <option value="4">076</option>
+                                <option value="9">079</option>
+                                <option value="8" selected>078</option>
+                                <option value="7">077</option>
+                                <option value="6">076</option>
                                 <option value="5">075</option>
-                                <option value="5">074</option>
-                                <option value="5">073</option>
-                                <option value="5">072</option>
+                                <option value="4">074</option>
+                                <option value="3">073</option>
+                                <option value="2">072</option>
                             </select>
                         </div>
                         <div class="col-md-4"><h4>البريد الالكترني</h4></div>
@@ -94,7 +93,7 @@ include_once "class/sql_queries.php"
                         <div class="col-md-12"><h3>التحصيل الدراسي</h3></div>
                         <div class="col-md-1"><h4>1.</h4></div>
                         <div class="col-md-3 mb-3 mb-md-0">
-                            <select  name="certificate_1" class="form-control" placeholder="التحصيل الدراسي" required>
+                            <select  name="certificate_1" class="form-control" placeholder="التحصيل الدراسي" required >
                                 <option value="0" selected >اختر الشهادة</option>
                                 <option value="1">ثانوي</option>
                                 <option value="2">معهد</option>
@@ -107,7 +106,7 @@ include_once "class/sql_queries.php"
                             <input type="text" name="specialty_1" class="form-control" placeholder="الاختصاص" required>
                         </div>
                         <div class="col-md-3 mb-3 mb-md-0">
-                            <input type="text" name="date_1" class="form-control" placeholder="سنة التخرج">
+                            <input type="text" name="date_1" class="form-control" placeholder="سنة التخرج"  required max="2019" min="1900" >
                         </div>
                         <div class="col-md-12"></div>
                         <div class="col-md-1"><h4>2.</h4></div>
@@ -125,7 +124,7 @@ include_once "class/sql_queries.php"
                             <input type="text" name="specialty_2" class="form-control" placeholder="الاختصاص" >
                         </div>
                         <div class="col-md-3 mb-3 mb-md-0">
-                            <input type="text" name="date_2" class="form-control" placeholder="سنة التخرج">
+                            <input type="text" name="date_2" class="form-control" placeholder="سنة التخرج"  max="2019" min="1900" >
                         </div>
                         <div class="col-md-12"><h3>كورسات اضافية</h3></div>
                         <div class="col-md-1"><h4>1.</h4></div>
@@ -133,7 +132,7 @@ include_once "class/sql_queries.php"
                             <input type="text" name="course_1" class="form-control" placeholder="الاختصاص">
                         </div>
                         <div class="col-md-3 mb-3 mb-md-0">
-                            <input type="text" name="date_3" class="form-control" placeholder="سنة التخرج">
+                            <input type="text" name="date_3" class="form-control" placeholder="سنة التخرج"  max="2019" min="1900" >
                         </div>
                         <div class="col-md-12"></div>
                         <div class="col-md-1"><h4>2.</h4></div>
@@ -156,8 +155,69 @@ include_once "class/sql_queries.php"
                         <?php
                         if (isset($_POST['save']))
                         {
+                            $date_2=0;
+                            $certificate_2="";
+                            $specialty_2="";
+                            $course_1="";
+                            $date_3=0;
+                            $course_2="";
+                            $date_4=0;
+                            //if the second certificate info. missing ignore all data
+                            if(($_POST['certificate_2']=="")||($_POST['specialty_2']=="")||($_POST['date_2']==""))
+                            {
+                                $date_2=0;
+                                $certificate_2="";
+                                $specialty_2="";
+                            }
+                            else
+                            {
+                                $certificate_2=$_POST['certificate_2'];
+                                $specialty_2=$_POST['specialty_2'];
+                                $date_2=$_POST['date_2'];
+                            }
+                            //if the first course info. missing ignore all data
+                            if(($_POST['course_1']=="")||($_POST['date_3']==""))
+                            {
+                              $course_1="";
+                              $date_3=0;
+                            }
+                            else
+                            {
+                                $course_1=$_POST['course_1'];
+                                $date_3=$_POST['date_3'];
+                            }
+                            //if the second course info. missing ignore all data
+                            if(($_POST['course_2']=="")||($_POST['date_4']==""))
+                            {
+                                $course_2="";
+                                $date_4=0;
+                            }
+                            else
+                            {
+                                $course_1=$_POST['course_2'];
+                                $date_4=$_POST['date_4'];
+                            }
+                            switch ($_POST['mobile1'])
+                             {
+                                case 9:$mobile="079".$_POST['mobile2'];
+                                       break;
+                                case 8:$mobile="078".$_POST['mobile2'];
+                                    break;
+                                case 7:$mobile="077".$_POST['mobile2'];
+                                    break;
+                                case 6:$mobile="076".$_POST['mobile2'];
+                                    break;
+                                case 5:$mobile="075".$_POST['mobile2'];
+                                    break;
+                                case 4:$mobile="074".$_POST['mobile2'];
+                                    break;
+                                case 3:$mobile="073".$_POST['mobile2'];
+                                    break;
+                                case 2:$mobile="072".$_POST['mobile2'];
+                                    break;
+                             }
                             Open_Connection();
-                            Insert_CV($_POST['full_name'],$_POST['birthday'],$_POST['mobile1'].$_POST['mobile2'],$_POST['email'],$_POST['address'],$_POST['certificate_1'],$_POST['specialty_1'],$_POST['date_1'],$_POST['certificate_2'],$_POST['specialty_2'],$_POST['date_2'],$_POST['course_1'],$_POST['date_3'],$_POST['course_2'],$_POST['date_4'],$_POST['details']);
+                            Insert_CV($_POST['full_name'],$_POST['birthday'],$mobile,$_POST['email'],$_POST['address'],$_POST['certificate_1'],$_POST['specialty_1'],$_POST['date_1'],$certificate_2,$specialty_2,$date_2,$course_1,$date_3,$course_2,$date_4,$_POST['details']);
                             Close_Connection();
                             //ob_end_flush();
                            // echo $_POST['full_name'];

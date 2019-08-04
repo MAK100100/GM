@@ -48,7 +48,7 @@ function Insert_CV( $full_name,$birthday,$mobile,$email,$address,$certificate_1,
     }
     else
     {
-      echo "فشلت العملية";//. '   '. $conn->error ;
+      echo "فشلت العملية". '   '. $conn->error ;
     }
 }
 
