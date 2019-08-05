@@ -5,7 +5,8 @@
  * Date: 7/31/2019
  * Time: 3:40 PM
  */
-include_once "readyform/form.php"
+include_once "readyform/form.php";
+include_once "class/sql_queries.php";
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -241,7 +242,11 @@ include_once "readyform/form.php"
 <span class="bg-success text-white badge py-2 px-3">Partime</span>
 <span class="bg-warning text-white badge py-2 px-3">Partime</span>
 <?php
-Display_Job();
+//Display_Job();
+Open_Connection();
+$result=Read_CV();
+Print_CV($result);
+Close_Connection();
 //News_letter();           //NEWS LETTER
 footer_1();             //FOOTER
 ?>

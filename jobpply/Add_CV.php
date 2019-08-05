@@ -94,8 +94,7 @@ include_once "class/sql_queries.php"
                         <div class="col-md-1"><h4>1.</h4></div>
                         <div class="col-md-3 mb-3 mb-md-0">
                             <select  name="certificate_1" class="form-control" placeholder="التحصيل الدراسي" required >
-                                <option value="0" selected >اختر الشهادة</option>
-                                <option value="1">ثانوي</option>
+                                <option value="1" selected>ثانوي</option>
                                 <option value="2">معهد</option>
                                 <option value="3">بكلوريوس</option>
                                 <option value="4">ماجستير</option>
@@ -112,8 +111,7 @@ include_once "class/sql_queries.php"
                         <div class="col-md-1"><h4>2.</h4></div>
                         <div class="col-md-3 mb-3 mb-md-0">
                             <select  name="certificate_2" class="form-control" placeholder="التحصيل الدراسي" required>
-                                <option value="0" selected >اختر الشهادة</option>
-                                <option value="1">ثانوي</option>
+                                <option value="1" selected>ثانوي</option>
                                 <option value="2">معهد</option>
                                 <option value="3">بكلوريوس</option>
                                 <option value="4">ماجستير</option>
@@ -216,8 +214,32 @@ include_once "class/sql_queries.php"
                                 case 2:$mobile="072".$_POST['mobile2'];
                                     break;
                              }
+                            switch ($_POST['certificate_1'])
+                            {
+                                case 1:$certificate_1="ثانوي";
+                                    break;
+                                case 2:$certificate_1="معهد";
+                                    break;
+                                case 3:$certificate_1="بكلوريوس";
+                                    break;
+                                case 4:$certificate_1="ماجستير";
+                                    break;
+                                case 5:$certificate_1="دكتورا";
+                            }
+                            switch ($_POST['certificate_2'])
+                            {
+                                case 1:$certificate_2="ثانوي";
+                                    break;
+                                case 2:$certificate_2="معهد";
+                                    break;
+                                case 3:$certificate_2="بكلوريوس";
+                                    break;
+                                case 4:$certificate_2="ماجستير";
+                                    break;
+                                case 5:$certificate_2="دكتورا";
+                            }
                             Open_Connection();
-                            Insert_CV($_POST['full_name'],$_POST['birthday'],$mobile,$_POST['email'],$_POST['address'],$_POST['certificate_1'],$_POST['specialty_1'],$_POST['date_1'],$certificate_2,$specialty_2,$date_2,$course_1,$date_3,$course_2,$date_4,$_POST['details']);
+                            Insert_CV($_POST['full_name'],$_POST['birthday'],$mobile,$_POST['email'],$_POST['address'],$certificate_1,$certificate_1,$_POST['date_1'],$certificate_2,$specialty_2,$date_2,$course_1,$date_3,$course_2,$date_4,$_POST['details']);
                             Close_Connection();
                             //ob_end_flush();
                            // echo $_POST['full_name'];
