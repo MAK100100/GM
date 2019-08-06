@@ -6,8 +6,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 
 session_start();
-$total_pages = $pageno =0;
-$total_rows = 0;
+$_SESSION['limit']=9;
 $url = 'http://localhost/myfile/jobpply';
 
 

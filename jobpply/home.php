@@ -245,7 +245,8 @@ include_once "class/sql_queries.php";
 //Display_Job();
 Open_Connection();
 $result=Read_CV();
-Print_CV($result);
+//Print_CV($result);
+Printcv($result);
 Close_Connection();
 //News_letter();           //NEWS LETTER
 footer_1();             //FOOTER

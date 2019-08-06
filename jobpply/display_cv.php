@@ -57,22 +57,19 @@ include_once "class/sql_queries.php";
     </div>
 </section>
 
-
-<span class="bg-info text-white badge py-2 px-3">Partime</span>
-<span class="bg-primary text-white badge py-2 px-3">Partime</span>
-<span class="bg-danger text-white badge py-2 px-3">Partime</span>
-<span class="bg-dark text-white badge py-2 px-3">Partime</span>
-<span class="bg-light text-white badge py-2 px-3">Partime</span>
-<span class="bg-success text-white badge py-2 px-3">Partime</span>
-<span class="bg-warning text-white badge py-2 px-3">Partime</span>
 <?php
 //Display_Job();
-
+if (isset($_GET['page']))
+    $page=$_GET['page'];
+else
+    $page=1;
 Open_Connection();
 $result=Read_CV();
-Print_CV($result);
+Full_Session($result);
+Pagination_Bar($page);
+Print_cv_page($page);
 Close_Connection();
-
+Pagination_Bar($page);
 //News_letter();           //NEWS LETTER
 footer_1();             //FOOTER
 ?>
