@@ -160,6 +160,9 @@ include_once "class/sql_queries.php"
                             $date_3=0;
                             $course_2="";
                             $date_4=0;
+                            $mobile=To_Mobile($_POST['mobile1'],$_POST['mobile2']);
+                            $certificate_1=To_Certificate($_POST['certificate_1']);
+                            $certificate_2=To_Certificate($_POST['certificate_2']);
                             //if the second certificate info. missing ignore all data
                             if(($_POST['certificate_2']=="")||($_POST['specialty_2']=="")||($_POST['date_2']==""))
                             {
@@ -169,7 +172,7 @@ include_once "class/sql_queries.php"
                             }
                             else
                             {
-                                $certificate_2=$_POST['certificate_2'];
+                                //$certificate_2=$_POST['certificate_2'];
                                 $specialty_2=$_POST['specialty_2'];
                                 $date_2=$_POST['date_2'];
                             }
@@ -192,54 +195,13 @@ include_once "class/sql_queries.php"
                             }
                             else
                             {
-                                $course_1=$_POST['course_2'];
+                                $course_2=$_POST['course_2'];
                                 $date_4=$_POST['date_4'];
                             }
-                            switch ($_POST['mobile1'])
-                             {
-                                case 9:$mobile="079".$_POST['mobile2'];
-                                       break;
-                                case 8:$mobile="078".$_POST['mobile2'];
-                                    break;
-                                case 7:$mobile="077".$_POST['mobile2'];
-                                    break;
-                                case 6:$mobile="076".$_POST['mobile2'];
-                                    break;
-                                case 5:$mobile="075".$_POST['mobile2'];
-                                    break;
-                                case 4:$mobile="074".$_POST['mobile2'];
-                                    break;
-                                case 3:$mobile="073".$_POST['mobile2'];
-                                    break;
-                                case 2:$mobile="072".$_POST['mobile2'];
-                                    break;
-                             }
-                            switch ($_POST['certificate_1'])
-                            {
-                                case 1:$certificate_1="ثانوي";
-                                    break;
-                                case 2:$certificate_1="معهد";
-                                    break;
-                                case 3:$certificate_1="بكلوريوس";
-                                    break;
-                                case 4:$certificate_1="ماجستير";
-                                    break;
-                                case 5:$certificate_1="دكتورا";
-                            }
-                            switch ($_POST['certificate_2'])
-                            {
-                                case 1:$certificate_2="ثانوي";
-                                    break;
-                                case 2:$certificate_2="معهد";
-                                    break;
-                                case 3:$certificate_2="بكلوريوس";
-                                    break;
-                                case 4:$certificate_2="ماجستير";
-                                    break;
-                                case 5:$certificate_2="دكتورا";
-                            }
+
+
                             Open_Connection();
-                            Insert_CV($_POST['full_name'],$_POST['birthday'],$mobile,$_POST['email'],$_POST['address'],$certificate_1,$certificate_1,$_POST['date_1'],$certificate_2,$specialty_2,$date_2,$course_1,$date_3,$course_2,$date_4,$_POST['details']);
+                            Insert_CV($_POST['full_name'],$_POST['birthday'],$mobile,$_POST['email'],$_POST['address'],$certificate_1,$_POST['specialty_1'],$_POST['date_1'],$certificate_2,$specialty_2,$date_2,$course_1,$date_3,$course_2,$date_4,$_POST['details']);
                             Close_Connection();
                             //ob_end_flush();
                            // echo $_POST['full_name'];
@@ -253,7 +215,8 @@ include_once "class/sql_queries.php"
                 </form>
             </div>
 
-            <?php Company_info(); ?>
+            <?php Adv();
+            ?>
         </div>
 
     </div>

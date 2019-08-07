@@ -233,20 +233,10 @@ include_once "class/sql_queries.php";
     </div>
 </section>
 
-
-<span class="bg-info text-white badge py-2 px-3">Partime</span>
-<span class="bg-primary text-white badge py-2 px-3">Partime</span>
-<span class="bg-danger text-white badge py-2 px-3">Partime</span>
-<span class="bg-dark text-white badge py-2 px-3">Partime</span>
-<span class="bg-light text-white badge py-2 px-3">Partime</span>
-<span class="bg-success text-white badge py-2 px-3">Partime</span>
-<span class="bg-warning text-white badge py-2 px-3">Partime</span>
 <?php
-//Display_Job();
 Open_Connection();
 $result=Read_CV();
-//Print_CV($result);
-Printcv($result);
+Print_cv_page(1);
 Close_Connection();
 //News_letter();           //NEWS LETTER
 footer_1();             //FOOTER

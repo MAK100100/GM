@@ -135,47 +135,6 @@ function Print_CV($result)
 			</div>
 		</section>";
 }
-//==================================================
-function Adv()
-{
-    echo "
-    <div class=\"col-lg-3 sidebar\">
-		        <div class=\"row justify-content-center pb-3\">
-		          <div class=\"col-md-12 heading-section ftco-animate\">
-		          	<span class=\"subheading\">Recruitment agencies</span>
-		            <h2 class=\"mb-4\">Top Recruitments</h2>
-		          </div>
-		        </div>
-		        <div class=\"sidebar-box ftco-animate\">
-		        	<div class=\"border\">
-			        	<a href=\"#\" class=\"company-wrap\"><img src=\"images/company-1.jpg\" class=\"img-fluid\" alt=\"Colorlib Free Template\"></a>
-			        	<div class=\"text p-3\">
-			        		<h3><a href=\"#\">Google Company</a></h3>
-			        		<p><span class=\"number\">500</span> <span>Open position</span></p>
-			        	</div>
-		        	</div>
-		        </div>
-		        <div class=\"sidebar-box ftco-animate\">
-		        	<div class=\"border\">
-			        	<a href=\"#\" class=\"company-wrap\"><img src=\"images/company-2.jpg\" class=\"img-fluid\" alt=\"Colorlib Free Template\"></a>
-			        	<div class=\"text p-3\">
-			        		<h3><a href=\"#\">Facebook Company</a></h3>
-			        		<p><span class=\"number\">700</span> <span>Open position</span></p>
-			        	</div>
-			        </div>
-		        </div>
-		        <div class=\"sidebar-box ftco-animate\">
-		        	<div class=\"border\">
-			        	<a href=\"#\" class=\"company-wrap\"><img src=\"images/company-3.jpg\" class=\"img-fluid\" alt=\"Colorlib Free Template\"></a>
-			        	<div class=\"text p-3\">
-			        		<h3><a href=\"#\">IT Programming INC</a></h3>
-			        		<p><span class=\"number\">700</span> <span>Open position</span></p>
-			        	</div>
-			        </div>
-		        </div>
-		      </div>
-    ";
-}
 //==========================PRINT CVs+++++++++++++++++++++++++
 function Print_cv_page($page)
 {
@@ -193,7 +152,7 @@ function Print_cv_page($page)
 				<div class=\"row\">
 		        ";
 
-    for ($i=($_SESSION['limit']*$page)-8;$i<=$_SESSION['limit']*$page;$i++)
+    for ($i=($_SESSION['limit']*$page)-9;$i<$_SESSION['limit']*$page;$i++)
     {
         if ($i>($_SESSION['cv_count']-1)) break;
         echo"
@@ -218,7 +177,7 @@ function Print_cv_page($page)
 			                	<span class=\"icon-heart\"></span>
 			                </a>
 		                </div>
-		                <a href=\"job-single.html\" class=\"btn btn-primary py-2\">السيرة الذاتية</a>
+		                <a href=\"show_cv.php?id=".$_SESSION['cv'][$i]['id']."&full_name=".$_SESSION['cv'][$i]['full_name']."\" class=\"btn btn-primary py-2\">السيرة الذاتية</a>
 		              </div>
 		            </div>
 		          </div><!-- end -->
@@ -259,6 +218,127 @@ function Pagination_Bar($page)
 	          </div>
 	        </div>";
 }
+//==================================================
+function Adv()
+{
+    echo "
+    <div class=\"col-lg-3 sidebar\">
+		        <div class=\"row justify-content-center pb-3\">
+		          <div class=\"col-md-12 heading-section ftco-animate\" align='center' '>
+		          	<span class=\"subheading\" ><h3>مساحة اعلانية</h3></span>
+		            <h5 class=\"mb-4\">للراغبين التواصل على الرقم 07803083298 </h5>
+		          </div>
+		        </div>
+		        <div class=\"sidebar-box ftco-animate\">
+		        	<div class=\"border\">
+			        	<a href=\"#\" class=\"company-wrap\"><img src=\"images/company-1.jpg\" class=\"img-fluid\" alt=\"Colorlib Free Template\"></a>
+			        	<div class=\"text p-3\">
+			        		<h3><a href=\"#\">Google Company</a></h3>
+			        		<p><span class=\"number\">500</span> <span>Open position</span></p>
+			        	</div>
+		        	</div>
+		        </div>
+		        <div class=\"sidebar-box ftco-animate\">
+		        	<div class=\"border\">
+			        	<a href=\"#\" class=\"company-wrap\"><img src=\"images/company-2.jpg\" class=\"img-fluid\" alt=\"Colorlib Free Template\"></a>
+			        	<div class=\"text p-3\">
+			        		<h3><a href=\"#\">Facebook Company</a></h3>
+			        		<p><span class=\"number\">700</span> <span>Open position</span></p>
+			        	</div>
+			        </div>
+		        </div>
+		        <div class=\"sidebar-box ftco-animate\">
+		        	<div class=\"border\">
+			        	<a href=\"#\" class=\"company-wrap\"><img src=\"images/company-3.jpg\" class=\"img-fluid\" alt=\"Colorlib Free Template\"></a>
+			        	<div class=\"text p-3\">
+			        		<h3><a href=\"#\">IT Programming INC</a></h3>
+			        		<p><span class=\"number\">700</span> <span>Open position</span></p>
+			        	</div>
+			        </div>
+		        </div>
+		      </div>
+    ";
+}
+//==========================CV Search ===========================
+function CV_Search($id, $full_name, $certificate_1, $certificate_2)
+{
+    global $conn;
+    $filter = "";
+    $bol = false;
+    if (!(strlen($id) == 0))
+    {
+        $filter = "id='" . $id . "'";
+        $bol = true;
+    }
+    if (!(strlen($full_name) == 0) && ($bol == true)) {
+        $filter = $filter . " AND full_name='" . $full_name . "'";
+    } elseif (!(strlen($full_name) == 0)) {
+        $filter = $filter . " full_name='" . $full_name . "'";
+        $bol = true;
+    }
+    if (!(strlen($certificate_1) == 0) && ($bol == true)) {
+        $filter = $filter . " AND certificate_1='" . $certificate_1 . "'";
+    } elseif (!(strlen($certificate_1) == 0)) {
+        $filter = $filter . " certificate_1='" . $certificate_1 . "'";
+        $bol = true;
+    }
+    if (!(strlen($certificate_2) == 0) && ($bol == true)) {
+        $filter = $filter . " AND certificate_2='" . $certificate_2 . "'";
+    } elseif (!(strlen($certificate_2) == 0)) {
+        $filter = $filter . " certificate_2='" . $certificate_2 . "'";
+        $bol = true;
+    }
 
 
+    $sql = "SELECT * FROM cv WHERE " . $filter . ";";
+    //echo $sql;
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0)
+        return ($result);
+}
+//==========================convert to mobile company==============
+function To_Mobile($key,$num)
+{
+    switch ($key)
+    {
+        case 9:$mobile="079".$num;
+            break;
+        case 8:$mobile="078".$num;
+            break;
+        case 7:$mobile="077".$num;
+            break;
+        case 6:$mobile="076".$num;
+            break;
+        case 5:$mobile="075".$num;
+            break;
+        case 4:$mobile="074".$num;
+            break;
+        case 3:$mobile="073".$num;
+            break;
+        case 2:$mobile="072".$num;
+            break;
+    }
+    return($mobile);
+}
+//==========================convert to Certificate ================
+function To_Certificate($key)
+{
+    if($key!=0)
+    {
+        switch ($key)
+        {
+            case 1:$certificate="ثانوي";
+                break;
+            case 2:$certificate="معهد";
+                break;
+            case 3:$certificate="بكلوريوس";
+                break;
+            case 4:$certificate="ماجستير";
+                break;
+            case 5:$certificate="دكتورا";
+        }
+        return($certificate);
+    }
+    else return("");
+}
 ?>
